@@ -1,0 +1,123 @@
+.upper-black {
+display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    height: 40px;
+    padding: 0 20px;
+    background-color: #252525;
+    border: 1px none;
+    position: relative;
+}
+
+.main-white {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    height: 60px;
+    border: 1px solid;
+    border-color: #e3e3e3;
+    padding: 12px;
+}
+
+.search-bar {
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #D8D8D8;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    position: relative;
+    width: 548px;
+    margin-left: 250px;
+    margin-right: 24px;
+}
+
+.search-input {
+    flex: 1; 
+}
+
+.search-input ::placeholder{
+    color: #9B9B9B;
+}
+
+.search-input input {
+    width: 100%; 
+    border: none; 
+    outline: none; 
+}
+
+.search-img img {
+    width: 20px;
+    height: 20px;
+}
+
+.search-bar .search-img {
+    flex: 0 0 auto;
+    position: relative;
+}
+
+.logo img{
+    height: 56px;
+    left: 0;
+    object-fit: cover;
+    width: 163px;
+    position: relative; 
+    top: -2px; 
+    left:171px;
+}
+
+.social-media-icons {
+    display: flex; 
+    align-items: center; 
+    position: relative;
+    left:110px; 
+}
+
+.social-media-icons .facebook img{
+    margin-right: 10px; 
+    height: 24px;
+    width: 24px;
+}
+
+.social-media-icons .instagram img{
+    margin-right: 10px; 
+    height: 26px;
+    width: 26px;
+    
+}
+
+.social-media-icons .twitter img{
+    margin-right: 10px; 
+    height: 26px;
+    width: 26px;
+}
+
+.menu a{
+    height: 24px;
+    text-decoration: none; 
+    color: #252525; 
+}
+
+.menu {
+    display: flex;
+    gap: 30px; 
+}
+
+.user-info{
+     display: flex;
+     gap: 24px; 
+     margin-right: 100px;
+}
+
+.user-info a{
+    color:#FFFFFF;
+    font-size: 14px;
+    text-decoration: none;
+
+}
+
+.user-info span{
+    color:#9B9B9B;
+    font-size: 14px;
+}
