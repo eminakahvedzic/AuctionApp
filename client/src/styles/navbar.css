@@ -20,6 +20,10 @@ display: flex;
     padding: 12px;
 }
 
+.hidden{
+    visibility: hidden; 
+    /* Search bar is hidden until functionality is applied */
+}
 .search-bar {
     align-items: center;
     background-color: #ffffff;
@@ -48,8 +52,8 @@ display: flex;
 }
 
 .search-img img {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .search-bar .search-img {

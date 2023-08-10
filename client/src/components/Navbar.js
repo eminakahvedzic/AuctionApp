@@ -41,16 +41,16 @@ const Navbar = () => {
             <img src={logo} alt="Logo" />
           </a>
         </div>
-
-        <div className="search-bar">
-          <div className="search-input">
-            <input type="text" placeholder="Try enter: Shoes" />
-          </div>
-          <div className="search-img">
-            <img src={searchicon} alt="Search Icon" />
+        <div className="hidden">
+          <div className="search-bar">
+            <div className="search-input">
+              <input type="text" placeholder="Try enter: Shoes" />
+            </div>
+            <div className="search-img">
+              <img src={searchicon} alt="Search Icon" />
+            </div>
           </div>
         </div>
-
         <div className="menu">
           <a href="/">HOME</a>
           <a href="/">SHOP</a>
