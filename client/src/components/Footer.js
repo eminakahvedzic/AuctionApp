@@ -1,8 +1,6 @@
 import React from "react";
+import "./constants.css"; 
 import "../styles/footer.css";
-import twitterIcon from "../images/twitter.png";
-import facebookIcon from "../images/facebook.png";
-import instagramIcon from "../images/instagram.png";
 
 const Footer = () => {
     
@@ -31,17 +29,17 @@ const Footer = () => {
         <div className="social-media-links">
           <div className="facebook">
             <a href="https://facebook.com">
-              <img src={facebookIcon} alt="Facebook" />
+              <img src="/images/facebook.png" alt="Facebook" />
             </a>
           </div>
           <div className="instagram">
             <a href="https://instagram.com">
-              <img src={instagramIcon} alt="Instagram" />
+              <img src="/images/instagram.png" alt="Instagram" />
             </a>
           </div>
           <div className="twitter">
             <a href="https://twitter.com">
-              <img src={twitterIcon} alt="Twitter" />
+              <img src="/images/twitter.png" alt="Twitter" />
             </a>
           </div>
         </div>

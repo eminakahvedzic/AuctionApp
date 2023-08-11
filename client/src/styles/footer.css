@@ -1,6 +1,6 @@
 .footer {
   height: 356px;
-  background-color: #252525; 
+  background-color: var(--neutral00); 
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -12,17 +12,17 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  color: #ffffff; 
+  color: var(--white); 
 }
 
 .static-pages a{
-    color:#D8D8D8;
+    color: var(--neutral09);
     margin-top: 15px;
     text-decoration: none;
     margin-left: 110px;
 }
 .static-pages span{
-    color:#9B9B9B;
+    color: var(--neutral05);
     margin-left: 110px;
     margin-bottom:15px;
     margin-top: 13px;
@@ -44,12 +44,12 @@
 }
 
 .contact-info a{
-    color:#D8D8D8;
+    color: var(--neutral09);
     margin-top: 15px;
     text-decoration: none;
 }
 .contact-info span{
-    color:#9B9B9B;
+    color: var(--neutral05);
     margin-bottom:15px;
     margin-top: 13px;
 
@@ -77,5 +77,4 @@
     height: 26px;
     width: 26px;
     margin-right: 26px;
-
 }

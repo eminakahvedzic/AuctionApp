@@ -1,0 +1,19 @@
+
+:root {
+  /* Primary color */
+  --primary-color: #8367D8;        
+  
+  /* Neutral colors */
+  --neutral00: #252525;              
+  --neutral05: #9B9B9B;        
+  --neutral09: #D8D8D8;      
+  --white: #FFFFFF;        
+  
+  /* Accent colors */
+  --info-color: #0066CC;     
+  --success-color: #417505; 
+  --error-color: #CC0000; 
+  --warning-color: #EC982D; 
+  --accent-color: #AB944E; 
+
+}

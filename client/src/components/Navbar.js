@@ -1,10 +1,6 @@
 import React from "react";
 import "../styles/navbar.css";
-import twitterIcon from "../images/twitter.png";
-import facebookIcon from "../images/facebook.png";
-import instagramIcon from "../images/instagram.png";
-import logo from "../images/logo.png";
-import searchicon from "../images/searchimg.png";
+import "./constants.css";
 
 const Navbar = () => {
   return (
@@ -13,17 +9,17 @@ const Navbar = () => {
         <div className="social-media-icons">
           <div className="facebook">
             <a href="https://facebook.com">
-              <img src={facebookIcon} alt="Facebook" />
+              <img src="/images/facebook.png" alt="Facebook" />
             </a>
           </div>
           <div className="instagram">
             <a href="https://instagram.com">
-              <img src={instagramIcon} alt="Instagram" />
+              <img src="/images/facebook.png" alt="Instagram" />
             </a>
           </div>
           <div className="twitter">
             <a href="https://twitter.com">
-              <img src={twitterIcon} alt="Twitter" />
+              <img src="/images/twitter.png" alt="Twitter" />
             </a>
           </div>
         </div>
@@ -38,7 +34,7 @@ const Navbar = () => {
       <div className="main-white">
         <div className="logo">
           <a href="/">
-            <img src={logo} alt="Logo" />
+            <img src="/images/logo.png" alt="Logo" />
           </a>
         </div>
         <div className="hidden">
@@ -47,7 +43,7 @@ const Navbar = () => {
               <input type="text" placeholder="Try enter: Shoes" />
             </div>
             <div className="search-img">
-              <img src={searchicon} alt="Search Icon" />
+              <img src="images/searchimg.png" alt="Search Icon" />
             </div>
           </div>
         </div>
