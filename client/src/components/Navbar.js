@@ -14,7 +14,7 @@ const Navbar = () => {
           </div>
           <div className="instagram">
             <a href="https://instagram.com">
-              <img src="/images/facebook.png" alt="Instagram" />
+              <img src="/images/instagram.png" alt="Instagram" />
             </a>
           </div>
           <div className="twitter">

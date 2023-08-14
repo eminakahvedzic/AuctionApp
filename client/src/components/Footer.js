@@ -1,9 +1,8 @@
 import React from "react";
-import "./constants.css"; 
+import "./constants.css";
 import "../styles/footer.css";
 
 const Footer = () => {
-    
   return (
     <div className="footer">
       <div className="static-pages">
