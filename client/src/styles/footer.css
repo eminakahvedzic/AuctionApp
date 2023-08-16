@@ -1,0 +1,80 @@
+.footer {
+  height: 356px;
+  background-color: var(--neutral00); 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px; 
+}
+
+.static-pages {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: var(--white); 
+}
+
+.static-pages a{
+    color: var(--neutral09);
+    margin-top: 15px;
+    text-decoration: none;
+    margin-left: 110px;
+}
+.static-pages span{
+    color: var(--neutral05);
+    margin-left: 110px;
+    margin-bottom:15px;
+    margin-top: 13px;
+
+}
+.social-media-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; 
+    margin-right: 110px;
+}
+
+.contact-info a{
+    color: var(--neutral09);
+    margin-top: 15px;
+    text-decoration: none;
+}
+.contact-info span{
+    color: var(--neutral05);
+    margin-bottom:15px;
+    margin-top: 13px;
+
+}
+.social-media-links {
+    display: flex; 
+    align-items: center; 
+    position: relative;
+    margin-top: 10px;
+}
+
+.social-media-links .facebook img{
+    height: 24px;
+    width: 24px;
+    margin-right: 16px;
+}
+
+.social-media-links .instagram img{
+    height: 26px;
+    width: 26px;
+    margin-right: 16px;
+}
+
+.social-media-links .twitter img{
+    height: 26px;
+    width: 26px;
+    margin-right: 26px;
+}
