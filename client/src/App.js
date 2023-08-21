@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import Home from "./pages/home";
 import Registration from "./pages/register";
-import PasswordRecovery from "./pages/password-recovery"
+import PasswordRecovery from "./pages/password-recovery";
 
 function App() {
   return (

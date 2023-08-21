@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/navbar.css";
 import "./constants.css";
+import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
   const location = useLocation();
@@ -14,40 +14,15 @@ const Navbar = () => {
     location.pathname === "/password-recovery";
 
   useEffect(() => {
-    const getJwtTokenFromCookie = () => {
-      const cookies = document.cookie.split("; ");
-      const jwtCookie = cookies.find((cookie) =>
-        cookie.startsWith("jwtToken=")
-      );
-      if (jwtCookie) {
-        return jwtCookie.split("=")[1];
-      }
-      return null;
-    };
-
-    const fetchUserDetails = async () => {
-      const token = getJwtTokenFromCookie();
-      if (token) {
-        try {
-          const response = await fetch("http://localhost:5001/user-details", {
-            method: "GET",
-            headers: {
-              "x-auth-token": token,
-            },
-          });
-
-          const data = await response.json();
-          setUserFirstName(data.user.firstName);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    };
-
     if (!isLoginPath) {
-      fetchUserDetails();
+      const userDetailsString = localStorage.getItem("userDetails");
+      console.log(userDetailsString);
+      if (userDetailsString) {
+        const userDetails = JSON.parse(userDetailsString);
+        setUserFirstName(userDetails.first_name);
+      }
     }
-  }, []); // Empty dependency array means this effect runs once on component mount
+  }, []);
 
   return (
     <>
@@ -76,7 +51,7 @@ const Navbar = () => {
             <a href="/register">Create an account</a>
           </div>
           <div className={`hi-message ${isLoginPath ? "hidden" : ""}`}>
-            {userFirstName && <p>Hi, {userFirstName}</p>}
+            {<p>Hi, {userFirstName}</p>}
           </div>
         </div>
       </div>

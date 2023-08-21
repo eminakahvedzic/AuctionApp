@@ -68,36 +68,11 @@ router.post("/login", async (req, res) => {
       secure: false,
     });
 
-    res.json({ message: "Login successful", token: token });
+    res.json({ message: "Login successful", token: token, user });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: "Server error" });
   }
-});
-
-router.get("/user-details", validateToken, async (req, res) => {
-  try {
-    const userId = req.user.userId;
-
-    const client = await pool.connect();
-    const result = await client.query("SELECT * FROM users WHERE id = $1", [
-      userId,
-    ]);
-    client.release();
-
-    const user = result.rows[0];
-    if (!user) {
-      return res.sendStatus(405);
-    }
-    return res.json(user);
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
-});
-
-router.get("/profile", validateToken, (req, res) => {
-  return res.json(req.user);
 });
 
 module.exports = router;

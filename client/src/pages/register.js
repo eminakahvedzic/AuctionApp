@@ -42,7 +42,7 @@ function Registration() {
   const handleRegistration = async () => {
     if (validateForm()) {
       try {
-        await axios.post("http://localhost:5001/auth/register", {
+        await axios.post("http://localhost:5001/api/register", {
           firstName,
           lastName,
           email,

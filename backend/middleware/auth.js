@@ -1,13 +1,13 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const validateToken = (req, res, next) => {
   try {
-    const token = req.cookies.jwtToken;
-    console.log(token);
+    const token = req.headers.authorization;
 
     if (!token) {
-      console.log("No token found");
       return res
         .status(401)
         .json({ message: "No token, authorization denied" });
@@ -16,7 +16,7 @@ const validateToken = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.SECRET_KEY, {
       algorithms: ["HS256"],
     });
-    console.log("Decoded user ID:", decoded.userId);
+
     req.user = decoded.userId;
     next();
   } catch (error) {
