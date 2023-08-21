@@ -1,18 +1,23 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import logo from "./images/logo.png";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./pages/login";
+import Home from "./pages/home";
+import Registration from "./pages/register";
+import PasswordRecovery from "./pages/password-recovery"
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <header className="App-header">
-        <p>Welcome to the AuctionApp! Happy bidding!</p>
-      </header>
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/password-recovery" element={<PasswordRecovery />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

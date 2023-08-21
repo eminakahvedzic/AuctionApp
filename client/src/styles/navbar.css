@@ -1,6 +1,5 @@
 .upper-black {
-display: flex;
-    justify-content: space-between;
+    display: flex;
     align-items: center;
     color: var(--white); 
     height: 40px;
@@ -24,6 +23,7 @@ display: flex;
     visibility: hidden; 
     /* Search bar is hidden until functionality is applied */
 }
+
 .search-bar {
     align-items: center;
     background-color: var(--white); 
@@ -68,7 +68,7 @@ display: flex;
     width: 163px;
     position: relative; 
     top: -2px; 
-    left:171px;
+    left:156px;
 }
 
 .social-media-icons {
@@ -111,7 +111,7 @@ display: flex;
 .user-info{
      display: flex;
      gap: 24px; 
-     margin-right: 100px;
+     margin-left:900px;
 }
 
 .user-info a{
@@ -123,4 +123,18 @@ display: flex;
 .user-info span{
     color: var(--neutral05); ;
     font-size: 14px;
+}
+
+.centered-logo .logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  margin-left: 450px;
+}
+
+.hi-message{
+     display: flex;
+     gap: 24px; 
+     margin-right: 100px;
 }
