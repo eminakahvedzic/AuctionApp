@@ -77,6 +77,16 @@
     line-height: 24px; 
 }
 
+.input-confirm-password{
+    margin-bottom: 16px;
+    margin-right: 400px;
+    color: var(--neutral-neutral-00, #252525);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 24px; 
+}
+
 .input-name {
     margin-bottom: 16px;
     margin-right: 460px;

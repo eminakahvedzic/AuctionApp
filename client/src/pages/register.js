@@ -13,6 +13,7 @@ function Registration() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
   const navigate = useNavigate();
 
@@ -35,6 +36,11 @@ function Registration() {
 
     if (!password) {
       errors.password = "Password is required.";
+    }
+    if (!confirmPassword) {
+      errors.confirmPassword = "Please confirm your password.";
+    } else if (password !== confirmPassword) {
+      errors.confirmPassword = "Passwords do not match.";
     }
 
     setErrorMessages(errors);
@@ -105,6 +111,18 @@ function Registration() {
             />
             {errorMessages.password && (
               <p className="error-message">{errorMessages.password}</p>
+            )}
+          </div>
+          <p className="input-confirm-password">Confirm Password:</p>
+          <div className="input-container">
+            <input
+              type="password"
+              placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            {errorMessages.confirmPassword && (
+              <p className="error-message">{errorMessages.confirmPassword}</p>
             )}
           </div>
           <button className="registration-button" onClick={handleRegistration}>
