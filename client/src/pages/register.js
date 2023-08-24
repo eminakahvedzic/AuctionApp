@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/register.css";
+import dotenv from "dotenv";
+import { AuthService } from "../services/authService";
+
+dotenv.config();
 
 function Registration() {
   const [firstName, setFirstName] = useState("");
@@ -42,13 +45,7 @@ function Registration() {
   const handleRegistration = async () => {
     if (validateForm()) {
       try {
-        await axios.post("http://localhost:5001/api/register", {
-          firstName,
-          lastName,
-          email,
-          password,
-        });
-
+        await AuthService.register(firstName, lastName, email, password);
         navigate("/login");
       } catch (error) {
         console.error(error);

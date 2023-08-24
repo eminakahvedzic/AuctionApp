@@ -133,8 +133,54 @@
   margin-left: 450px;
 }
 
-.hi-message{
+.hi-message {
      display: flex;
-     gap: 24px; 
-     margin-right: 100px;
+     gap: 15px; 
+     margin-left:1110px;
+}
+
+.navigation {
+  width: fit-content;
+
+}
+
+img {
+  width: 20px;
+  float: left;
+  opacity: 90%;
+}
+
+.logout {
+  font-size: .8em;
+  position: relative;
+  right: -10px;
+  bottom: -4px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+  
+}
+
+.button {
+  text-decoration: none;
+  float: right;
+  margin-top: 15px;
+  color: white;
+  width: 25px;
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden
+}
+
+.navigation a:hover {
+  width: 100px;
+}
+
+.navigation a:hover .logout{
+  opacity: .9;
+}
+
+.navigation a {
+  text-decoration: none;
 }

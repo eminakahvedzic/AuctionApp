@@ -2,16 +2,29 @@ import { useLocation } from "react-router-dom";
 import "../styles/navbar.css";
 import "./constants.css";
 import React, { useState, useEffect } from "react";
+import loginPathnames from "../constants";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [userFirstName, setUserFirstName] = useState("");
 
-  const isLoginPath =
-    location.pathname === "/login" ||
-    location.pathname === "/register" ||
-    location.pathname === "/password-recovery";
+  const isLoginPath = loginPathnames.includes(location.pathname);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+useEffect(() => {
+  const cookieString = document.cookie;
+  const tokenCookie = cookieString
+    .split("; ")
+    .find((row) => row.startsWith("jwtToken="));
+
+  setIsLoggedIn(!!tokenCookie && tokenCookie.split("=")[1].trim() !== "");
+}, []);
+
 
   useEffect(() => {
     if (!isLoginPath) {
@@ -23,6 +36,14 @@ const Navbar = () => {
       }
     }
   }, []);
+
+  const handleLogout = () => {
+    document.cookie =
+      "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    localStorage.removeItem("userDetails");
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
 
   return (
     <>
@@ -45,22 +66,33 @@ const Navbar = () => {
               </a>
             </div>
           </div>
-          <div className={`user-info ${isLoginPath ? "" : "hidden"}`}>
-            <a href="/login">Login</a>
-            <span className="or-text">or</span>
-            <a href="/register">Create an account</a>
-          </div>
-          <div className={`hi-message ${isLoginPath ? "hidden" : ""}`}>
-            {<p>Hi, {userFirstName}</p>}
+          <div>
+            {isLoggedIn ? (
+              <div className={`hi-message ${isLoggedIn ? "" : "hidden"}`}>
+                <p>Hi, {userFirstName}</p>
+                <div className="navigation">
+                  <a className="button" href="" onClick={handleLogout}>
+                    <img src="/images/logout-icon.png" alt="Profile" />
+                    <div className="logout">LOGOUT</div>
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div className={`user-info ${isLoggedIn ? "hidden" : ""}`}>
+                <Link to="/login">Login</Link>
+                <span className="or-text">or</span>
+                <Link to="/register">Create an account</Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
       <div className="main-white">
         <div className={`main-white ${isLoginPath ? "centered-logo" : ""}`}>
           <div className="logo">
-            <a href="/">
+            <Link to="/">
               <img src="/images/logo.png" alt="Logo" />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="hidden">
@@ -75,9 +107,9 @@ const Navbar = () => {
         </div>
         <div className={`main-white ${isLoginPath ? "hidden" : ""}`}>
           <div className="menu">
-            <a href="/">HOME</a>
-            <a href="/">SHOP</a>
-            <a href="/">MY ACCOUNT</a>
+            <Link to="/">HOME</Link>
+            <Link to="/">SHOP</Link>
+            <Link to="/">MY ACCOUNT</Link>
           </div>
         </div>
       </div>

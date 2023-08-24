@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; // Import useEffect here
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -6,12 +6,17 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/login.css";
 import "../components/constants.css";
+import dotenv from "dotenv";
+import { AuthService } from "../services/authService";
+
+dotenv.config();
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
   const [rememberMe, setRememberMe] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,6 +47,7 @@ function Login() {
   };
 
   const handleLogin = async (e) => {
+    const errors = {};
     const data = {
       email: email,
       password: password,
@@ -49,15 +55,7 @@ function Login() {
 
     if (validateForm()) {
       try {
-        const response = await axios.post(
-          "http://localhost:5001/api/login",
-          data,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await AuthService.login(email, password);
 
         if (response.status === 200) {
           const responseData = response.data;
@@ -74,13 +72,18 @@ function Login() {
           } else {
             Cookies.remove("rememberedEmail");
           }
+          localStorage.setItem(
+            "userDetails",
+            JSON.stringify(responseData.user)
+          );
 
-          console.log("Login successful");
           navigate("/");
         } else {
           console.log("Login failed");
         }
       } catch (error) {
+        errors.login = "Invalid Email or Password. Please try again.";
+        setErrorMessages(errors);
         console.error("Error:", error);
       }
     }
@@ -130,6 +133,10 @@ function Login() {
             <span class="checkmark"></span>
             <label htmlFor="remember">Remember me</label>
           </div>
+
+          {errorMessages.login && (
+            <p className="error-message">{errorMessages.login}</p>
+          )}
           <button className="login-button" onClick={handleLogin}>
             Login
           </button>

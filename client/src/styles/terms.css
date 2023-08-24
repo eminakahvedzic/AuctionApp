@@ -1,0 +1,134 @@
+.terms-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 70px;
+  background-color: var(--white);
+  border: 1px solid var(--neutral09);
+  border-radius: 0px;
+  margin-bottom: 50px;
+}
+
+.title-section{
+  border-bottom: 1px solid var(--neutral09);
+  padding: 10px;
+  display: flex;
+  gap: 60px;
+}
+.terms-container h1 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  color: #333;
+}
+
+.terms-container h2 {
+  font-size: 24px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.terms-container p {
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.terms-container ul {
+  text-align: left;
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.terms-container ul li {
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.title-section button{
+  border: 0;
+  background-color: var(--white);
+
+}
+.arrow{
+  position:relative;
+  width:70px;
+  height: 70px;
+  cursor:pointer;
+  transition:0.5s;
+  overflow:hidden;
+}
+
+.arrow:hover{
+  border:solid 2px var(--primary-color); 
+  border-radius:50%;
+}
+.arrow:after{
+  position:absolute;
+  display:block;
+  content:"";
+  color:var(--primary-color);
+  width: 70px;
+  height: 35px;
+  top:-1px;
+  left: -1px;
+  border-bottom:solid 2px;
+  transform:translatex(4px);
+}
+
+.arrow:before{
+  position:absolute;
+  display:block;
+  content:"";
+  color:var(--primary-color);
+  width: 30px;
+  height: 30px;
+  border-top:solid 2px;
+  border-left:solid 2px;
+  top:50%;
+  left:2px;
+  transform-origin:0% 0%;
+  transform:rotatez(-45deg);
+
+}
+.arrow:hover:before{
+  animation: aniArrow01 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+.arrow:hover:after{
+  animation: aniArrow02 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+
+
+@keyframes aniArrow01 {
+  0% {
+    transform:rotatez(-45deg) translateY(30px) translateX(30px);
+  }
+  100% {
+    transform: rotatez(-45deg) translateY(-35px) translateX(-35px);
+  }
+}
+
+
+@keyframes aniArrow02 {
+  0% {
+    transform:translateX(45px);
+  }
+  100% {
+    transform:translateX(-44px) translateY(-4px);
+  }
+}
+
+@keyframes borderAni{
+   0% {
+    border:solid 2px var(--primary-color);
+  }
+  100% {    
+    border:solid 2px var(--primary-color); 
+    border-radius:50%;
+  }
+}

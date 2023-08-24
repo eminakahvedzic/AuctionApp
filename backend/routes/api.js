@@ -14,7 +14,7 @@ app.use(cookieParser());
 
 router.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
   })
 );
@@ -40,8 +40,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-module.exports = router;
-
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -60,7 +58,9 @@ router.post("/login", async (req, res) => {
       expiresIn: "3650d",
     });
 
-    console.log(res.getHeaders());
+    const userWithoutPassword = { ...user };
+    delete userWithoutPassword.password;
+
     res.cookie("jwtToken", token, {
       httpOnly: true,
       expires: 0,
@@ -68,7 +68,11 @@ router.post("/login", async (req, res) => {
       secure: false,
     });
 
-    res.json({ message: "Login successful", token: token, user });
+    res.json({
+      message: "Login successful",
+      token: token,
+      user: userWithoutPassword,
+    });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: "Server error" });
