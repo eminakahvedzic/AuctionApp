@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./constants.css";
 import "../styles/footer.css";
 
@@ -7,17 +8,14 @@ const Footer = () => {
     <div className="footer">
       <div className="static-pages">
         <span className="auction-text">AUCTION</span>
-        <a href="/">About Us</a>
-        <a href="https://www.termsandcondiitionssample.com/live.php?token=OA0eR5hEPn1ZdWpIrSyMXHjgFq6wT7I3">
-          Terms and Conditions
-        </a>
-        <a href="https://ctxt.io/2/AABQuFWtFw">Privacy and Policy</a>
+        <Link to="/">About Us</Link>
+        <Link to="/terms-and-conditions">Terms and Conditions</Link>
+        <Link to="/privacy-and-policy">Privacy and Policy</Link>
       </div>
 
       <div className="contact-info">
         <span className="get-in-touch">GET IN TOUCH</span>
-
-        <a href="/">Call us at: +123 797-567-2535</a>
+        <Link to="/">Call us at: +123 797-567-2535</Link>
         <a
           href="mailto:support@auction.com?subject=Customer%20Support"
           target="_blank"
