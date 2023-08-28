@@ -7,3 +7,248 @@
 .content {
   flex: 1; 
 }
+
+.first-box{
+  display: flex;
+  width: 1440px;
+  justify-content: center;
+  align-items: center;
+  gap: 119px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.category-item{
+  display: flex;
+  width: 262px;
+  padding: 16px;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--neutral00);
+  text-decoration: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; 
+  border-color:var(--neutral09);
+  border-bottom-style: solid;
+
+}
+
+.category-title-box{
+  display: flex;
+  width: 262px;
+  padding: 16px;
+  padding-bottom: 0;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--neutral-white, #FFF);
+}
+
+.category-title-box h2{
+  color: var(--primary-color, #8367D8);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; 
+
+}
+.category-list {
+  list-style: none;
+  padding: 0; 
+  margin: 0;
+}
+
+.ad-box{
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+  margin-top: -80px;
+}
+
+.ad-text{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ad-text h2{
+  color: var(--neutral-00, #252525);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; 
+}
+
+.ad-text h3{
+  color: var(--primary-color, #8367D8);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; 
+}
+
+.ad-text p{
+  color: var(--neutral-05, #9B9B9B);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; 
+  width: 346px;
+  text-align: left;
+  margin-bottom: 100px;
+}
+
+
+.ad-img img{
+  width: 357px;
+  height: 420px;
+  border: 0.5px solid var(--neutral09);
+  object-fit: cover; 
+}
+
+.ad-text .ad-button{
+  display: flex;
+  height: 51px;
+  padding: 5px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border: 3px solid var(--primary-color);
+  text-decoration: none;
+  color: var(--neutral00);
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.second-box{
+  display: flex;
+  width: 1440px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.featured-products-title{
+  color: var(--neutral-00);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; 
+  letter-spacing: 0.84px;
+  text-align: left;
+  border-bottom: 1px solid var(--neutral09);
+  padding-bottom:10px;
+  padding-left:5px;
+}
+
+.featured-products-box{
+  display: flex;
+  align-items: flex-start;
+  gap: 43px;
+}
+
+.featured-products-item{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.featured-image img{
+  width: 356px;
+  height: 475.573px;
+  flex-shrink: 0;
+  object-fit: cover; 
+  margin-bottom: 12px;
+
+}
+
+.featured-details{
+  text-align: left;
+}
+
+.featured-details h3{
+  color: var(--neutral-neutral-00, #252525);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; 
+  letter-spacing: 0.84px;
+}
+
+.featured-details p {
+  color: var(--text-secondary, #9B9B9B);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-top: -11px;
+}
+
+.featured-details .price {
+  color: var(--primary-color, #8367D8);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.third-box{
+  display: flex;
+  width: 1440px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  flex-direction: column;
+  gap: 32px;
+
+}
+
+.tab-titles {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  border-bottom: 1px solid var(--neutral09);
+  width: 1150px;
+}
+
+.tab-titles button {
+  background-color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, font-size 0.3s ease;
+  color: var(--neutral00, #252525);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.84px;
+  text-align: left;
+  color: var(--neutral-neutral-00, #252525);
+  padding-bottom:10px;
+}
+
+.tab-titles button:hover {
+  font-size: 20px !important;
+}
+
+.active-tab {
+  color: var(--neutral00);
+  font-size: 20px !important;
+  line-height: 36px; 
+  letter-spacing: 0.84px;
+  font-weight: bold;
+  line-height: 36px; 
+  letter-spacing: 0.84px;
+  text-align: left;
+  border-bottom: 1px solid var(--neutral09);
+  padding-bottom:10px;
+  padding-left:5px;
+}
+
+.grid-view{
+  margin-left: 75px;
+}

@@ -79,4 +79,96 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/categories", async (req, res) => {
+  try {
+    const categories = await queries.getAllCategories();
+    res.json(categories);
+  } catch (error) {
+    console.error("Error fetching categories:", error.message);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.put("/categories/:id", async (req, res) => {
+  try {
+    const categoryId = req.params.id;
+    const { newCategoryName } = req.body;
+
+    const updatedCategory = await queries.updateCategory(
+      categoryId,
+      newCategoryName
+    );
+    if (!updatedCategory) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    res.json(updatedCategory);
+  } catch (error) {
+    console.error("Error updating category:", error.message);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.post("/categories", async (req, res) => {
+  try {
+    const { newCategoryName } = req.body;
+
+    const addedCategory = await queries.addCategory(newCategoryName);
+    res.json(addedCategory);
+  } catch (error) {
+    console.error("Error adding category:", error.message);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.delete("/categories/:category_id", async (req, res) => {
+  try {
+    const categoryId = req.params.category_id;
+
+    const deletedCategory = await queries.deleteCategory(categoryId);
+    if (!deletedCategory) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    res.json(deletedCategory);
+  } catch (error) {
+    console.error("Error deleting category:", error.message);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.get("/products/featured", async (req, res) => {
+  const count = req.query.count || 1; 
+  try {
+    const featuredProducts = await queries.getFeaturedProducts(count);
+    res.json(featuredProducts);
+  } catch (error) {
+    console.error("Error fetching featured products:", error.message);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.get("/products/:category", async (req, res) => {
+  try {
+    const { category } = req.params;
+    let products;
+
+    if (category === "new_arrivals") {
+      products = await queries.getNewArrivals();
+    } else if (category === "top_rated") {
+      products = await queries.getTopRated();
+    } else if (category === "last_chance") {
+      products = await queries.getLastChance();
+    } else {
+      return res.status(400).json({ message: "Invalid category" });
+    }
+
+    res.json(products);
+  } catch (error) {
+    console.error("Error fetching products:", error.message);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
 module.exports = router;
