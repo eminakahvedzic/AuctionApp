@@ -32,9 +32,10 @@
     justify-content: space-between;
     padding: 12px 20px;
     position: relative;
-    width: 548px;
+    width: 500px;
     margin-left: 250px;
     margin-right: 24px;
+    height: 25px;
 }
 
 .search-input {
