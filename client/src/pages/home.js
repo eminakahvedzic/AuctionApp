@@ -4,12 +4,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/home.css";
 import axios from "axios";
-import dotenv from "dotenv";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import GridView from "../components/GridView";
-
-dotenv.config();
 
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
@@ -34,8 +31,6 @@ const HomePage = () => {
             `${process.env.REACT_APP_API_URL}/products/featured?count=3`
           ),
         ]);
-        handleTabClick("new_arrivals");
-        console.log(featuredProductResponse.data);
         setCategories(categoriesResponse.data);
         setFeaturedProduct(featuredProductResponse.data);
         setFeaturedProducts(featuredProductsResponse.data);
@@ -49,11 +44,14 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchTabProducts = async () => {
+      const storedTab = sessionStorage.getItem("selectedTab"); 
+      if (storedTab) {
+        setCurrentTab(storedTab);
+      }
       try {
         const tabProductsResponse = await axios.get(
           `${process.env.REACT_APP_API_URL}/products/${currentTab}`
         );
-        console.log("PRODUCT DATA JEE:", tabProductsResponse.data);
         setCurrentProducts(tabProductsResponse.data);
       } catch (error) {
         console.error(`Error fetching ${currentTab} products:`, error);
@@ -64,6 +62,7 @@ const HomePage = () => {
   }, [currentTab]);
 
   const handleTabClick = (tab) => {
+    sessionStorage.setItem("selectedTab", tab);
     setCurrentTab(tab);
   };
 

@@ -92,7 +92,8 @@ module.exports = {
     const queryString = `
       SELECT * 
       FROM product 
-      ORDER BY RANDOM() -- Select a random product
+      WHERE closing_date > CURRENT_DATE 
+      ORDER BY RANDOM() 
       LIMIT 1;
     `;
 
@@ -106,11 +107,12 @@ module.exports = {
 
   async getFeaturedProducts(count) {
     const queryString = `
-    SELECT * 
-    FROM product 
-    ORDER BY RANDOM() 
-    LIMIT $1;
-  `;
+      SELECT * 
+      FROM product 
+      WHERE closing_date > CURRENT_DATE 
+      ORDER BY RANDOM() 
+      LIMIT $1;
+    `;
 
     try {
       const result = await db.query(queryString, [count]);
@@ -124,6 +126,7 @@ module.exports = {
     const queryString = `
       SELECT *
       FROM product
+      WHERE closing_date > CURRENT_DATE 
       ORDER BY time_created DESC
       LIMIT 8;
     `;
@@ -140,6 +143,7 @@ module.exports = {
     const queryString = `
       SELECT *
       FROM product
+      WHERE closing_date > CURRENT_DATE
       ORDER BY rating DESC
       LIMIT 8;
     `;
@@ -156,7 +160,7 @@ module.exports = {
     const queryString = `
       SELECT *
       FROM product
-      WHERE closing_date > CURRENT_DATE
+      WHERE closing_date > CURRENT_DATE 
       ORDER BY closing_date
       LIMIT 8;
     `;
