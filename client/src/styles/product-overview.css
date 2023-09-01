@@ -1,0 +1,275 @@
+.first-content-box{
+    display: flex;
+    gap: 117px;
+    width: 1440px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.images-box .large-image img{
+    width: 453px;
+    height: 622px;
+    object-fit: cover; 
+    background: lightgray 50% / contain no-repeat;
+}
+
+.images-box .carousel{
+    display: flex;
+    width: 453px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.images-box .carousel img{
+    width: 71px;
+    height: 97.488px;
+    flex-shrink: 0;
+    object-fit: cover; 
+    border: 2px solid transparent; 
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out; 
+}
+
+.images-box .carousel img:hover {
+    transform: scale(1.1); 
+    border-color: white; 
+    box-shadow: 0 0 10px rgba(131, 103, 216, 0.5); 
+}
+
+.text-and-bid-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text-and-bid-box .bidding{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.text-and-bid-box .details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+.text-and-bid-box .bidding h2{
+    color: var(--neutral00, #252525);
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; 
+    margin-bottom: -25px;
+}
+
+.text-and-bid-box .bidding .startsFrom {
+    color: var(--primary-primary, #8367D8);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+ .highlighted {
+    font-weight: 600;
+    color: var(--primary-primary, #8367D8);
+}
+
+.text-and-bid-box .bidding .bid-info{
+    display: flex;
+    width: 263px;
+    padding: 10px 32px;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--neutral09, #D8D8D8);
+    text-align: left;
+}
+.text-and-bid-box .bidding .bid-input{
+    display: flex;
+    width: 547px;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.text-and-bid-box .bidding .bid-input input{
+    width: 331px;
+    height: 51.059px;
+    flex-shrink: 0;
+    border: 1px solid var(--neutral09, #D8D8D8);
+    background: var(--white, #FFF);
+}
+
+.text-and-bid-box .bidding .bid-input input::placeholder{
+    width: 171.163px;
+    height: 17.965px;
+    flex-shrink: 0;
+    color: var(--neutral05, #9B9B9B);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; 
+    padding-left: 30px;
+}
+
+.text-and-bid-box .bidding .bid-input .bid-button {
+    display: flex;
+    height: 51px;
+    padding: 0px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border: 3px solid var(--primary-color);
+    text-decoration: none;
+    background-color: transparent; 
+    color: var(--primary-color); 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.text-and-bid-box .bidding .bid-input .bid-button:hover {
+    background-color: var(--primary-color); 
+    color: #fff; 
+}
+
+.wishlist-box {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid var(--neutral09, #D8D8D8);
+    padding: 1px 32px;
+}
+
+.wishlist-box p {
+     margin-right: 9px; 
+}
+
+.wishlist-icon {
+    font-size: 24px;
+    color: #ccc; 
+    transition: color 0.3s ease; 
+}
+
+.wishlist-icon:hover {
+    color: var(--primary-color); 
+}
+
+.text-and-bid-box .details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.text-and-bid-box .details .tab{
+    display: flex;
+    align-items: flex-start;
+    gap: 104px;
+    border-bottom: 1px solid var(--neutral09);
+    padding: 40px;
+    padding-bottom: 10px;
+}
+
+.text-and-bid-box .details .tab button{
+    background-color: var(--white);
+    border: none;
+    cursor: pointer;
+    color: var(--neutral-neutral-00, #252525);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.active {
+    color: var(--primary-primary, #8367D8) !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; 
+    text-align: center;
+}
+
+.text-and-bid-box .details .tab-content p{
+    color: var(--neutral-neutral-05, #9B9B9B);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; 
+    width: 548px;
+    text-align: left;
+}
+
+.product-bar {
+    padding-bottom: 0px;
+    padding-top: 0;
+    border-bottom: 1px solid var(--neutral09);
+    margin-left: 135px;
+    margin-right: 135px;
+    margin-bottom: 30px;
+}
+
+.product-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; 
+}
+
+.product-title h2 {
+    color: var(--neutral00, #252525);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; 
+}
+
+.page-path a {
+    color: var(--neutral-neutral-05, #9B9B9B);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; 
+}
+
+.page-path a:hover {
+    color: var(--primary-color);
+
+}
+
+.page-path a:last-child {
+    color: var(--primary-color, #8367D8);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; 
+}
+
+.second-content-box{
+    display: flex;
+    width: 1440px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.related-products-title{
+    color: var(--neutral-00);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px; 
+    letter-spacing: 0.84px;
+    text-align: center;
+    border-bottom: 1px solid var(--neutral09);
+    padding-bottom:10px;
+    padding-left:5px;
+    margin-top: 30px;
+}
+
+.carousel img:hover {
+    transform: scale(1.1); 
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer; 
+}

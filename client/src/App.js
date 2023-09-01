@@ -7,6 +7,7 @@ import Registration from "./pages/register";
 import PasswordRecovery from "./pages/password-recovery"
 import TermsAndConditions from "./pages/terms-and-conditions";
 import PrivacyAndPolicy from "./pages/privacy-and-policy";
+import ProductOverview from "./pages/product-overview"; 
 
 function App() {
   return (
@@ -17,9 +18,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/password-recovery" element={<PasswordRecovery />} />
-          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route
+            path="/terms-and-conditions"
+            element={<TermsAndConditions />}
+          />
           <Route path="/privacy-and-policy" element={<PrivacyAndPolicy />} />
-
+          <Route path="/product/:product_id" element={<ProductOverview />} />
         </Routes>
       </div>
     </Router>

@@ -44,7 +44,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchTabProducts = async () => {
-      const storedTab = sessionStorage.getItem("selectedTab"); 
+      const storedTab = sessionStorage.getItem("selectedTab");
       if (storedTab) {
         setCurrentTab(storedTab);
       }
@@ -89,7 +89,11 @@ const HomePage = () => {
                     </Link>
                   </li>
                 ))}
-                <li className="category-item">All Categories</li>
+                <li className="category-item">
+                  <Link to="/all-categories" className="category-item">
+                    All Categories
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -112,7 +116,9 @@ const HomePage = () => {
                 </Link>
               </div>
               <div className="ad-img">
-                <img src={featuredProduct[0].image_url} alt="Ad Image" />
+                <Link to={`/product/${featuredProduct[0].product_id}`}>
+                  <img src={featuredProduct[0].image_url} alt="Ad Image" />
+                </Link>
               </div>
             </div>
           ) : (
@@ -128,16 +134,21 @@ const HomePage = () => {
             <div className="featured-products-box">
               {featuredProducts.map((product) => (
                 <div key={product.product_id} className="featured-item">
-                  <div className="featured-image">
-                    <img src={product.image_url} alt={product.name} />
-                  </div>
-                  <div className="featured-details">
-                    <h3>{product.name}</h3>
-                    <p>
-                      Start From{" "}
-                      <span className="price">${product.starting_bid}</span>
-                    </p>
-                  </div>
+                  <Link
+                    to={`/product/${product.product_id}`}
+                    className="product-link"
+                  >
+                    <div className="featured-image">
+                      <img src={product.image_url} alt={product.name} />
+                    </div>
+                    <div className="featured-details">
+                      <h3>{product.name}</h3>
+                      <p>
+                        Start From{" "}
+                        <span className="price">${product.starting_bid}</span>
+                      </p>
+                    </div>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -167,7 +178,26 @@ const HomePage = () => {
           </div>
 
           <div className="grid-view">
-            <GridView products={currentProducts} columns={4} rows={2} />
+            {currentProducts.map((product) => (
+              <Link
+                key={product.product_id}
+                to={`/product/${product.product_id}`}
+                className="product-link"
+              >
+                <div className="product-item">
+                  <div className="product-image">
+                    <img src={product.image_url} alt={product.name} />
+                  </div>
+                  <div className="product-details">
+                    <h3>{product.name}</h3>
+                    <p>
+                      Start From{" "}
+                      <span className="price">${product.starting_bid}</span>
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </main>

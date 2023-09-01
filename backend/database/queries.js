@@ -172,4 +172,29 @@ module.exports = {
       throw error;
     }
   },
+
+  async getProductImages(productId) {
+    const queryString =
+      "SELECT image_url FROM product_images WHERE product_id = $1";
+    const values = [productId];
+
+    try {
+      const result = await db.query(queryString, values);
+      return result.rows.map((row) => row.image_url);
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async getProductById(productId) {
+    try {
+      const product = await db.query(
+        "SELECT * FROM product WHERE product_id = $1",
+        [productId]
+      );
+      return product;
+    } catch (error) {
+      throw new Error(`Error fetching product by ID: ${error.message}`);
+    }
+  },
 };

@@ -106,8 +106,7 @@
   border: 0.5px solid var(--neutral09);
   object-fit: cover; 
 }
-
-.ad-text .ad-button{
+.ad-text .ad-button {
   display: flex;
   height: 51px;
   padding: 5px 32px;
@@ -119,7 +118,15 @@
   color: var(--neutral00);
   font-weight: 500;
   margin-left: 4px;
+  background-color: transparent; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
+
+.ad-text .ad-button:hover {
+  background-color: var(--primary-color); 
+  color: #fff; 
+}
+
 
 .second-box{
   display: flex;
@@ -176,6 +183,12 @@
   font-weight: 500;
   line-height: 36px; 
   letter-spacing: 0.84px;
+  text-decoration: none;
+
+}
+
+a:link{
+  text-decoration: none!important;
 }
 
 .featured-details p {
