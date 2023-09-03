@@ -35,6 +35,11 @@
 
 }
 
+.category-item:hover{
+  background-color: var(--neutral09);
+  opacity: 90%;
+}
+
 .category-title-box{
   display: flex;
   width: 262px;
@@ -234,7 +239,7 @@ a:link{
   cursor: pointer;
   transition: background-color 0.3s ease, font-size 0.3s ease;
   color: var(--neutral00, #252525);
-  font-size: 16px;
+  font-size: 16px !important;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -245,23 +250,19 @@ a:link{
 }
 
 .tab-titles button:hover {
-  font-size: 20px !important;
+  font-size: 20px!important;
 }
 
-.active-tab {
-  color: var(--neutral00);
-  font-size: 20px !important;
-  line-height: 36px; 
+#active-tab {
+  font-size: 20px!important;
   letter-spacing: 0.84px;
-  font-weight: bold;
-  line-height: 36px; 
   letter-spacing: 0.84px;
   text-align: left;
   border-bottom: 1px solid var(--neutral09);
-  padding-bottom:10px;
-  padding-left:5px;
 }
 
 .grid-view{
-  margin-left: 75px;
+  margin-left: 10px;
 }
+
+
