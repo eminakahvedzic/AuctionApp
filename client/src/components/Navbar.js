@@ -88,7 +88,7 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-        <div className="hidden">
+        <div className={`main-white ${isLoginPath ? "hidden" : ""}`}>
           <div className="search-bar">
             <div className="search-input">
               <input type="text" placeholder="Try enter: Shoes" />
