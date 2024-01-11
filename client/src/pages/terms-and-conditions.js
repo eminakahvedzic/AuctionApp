@@ -1,19 +1,45 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/terms.css";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 const TermsAndConditions = () => {
-    const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
-    const goBack = () => {
-      navigate(-1); 
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      setShowBackToTop(true);
+    } else {
+      setShowBackToTop(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <div className="terms-page">
       <Navbar />
-      
+
       <div className="terms-container">
         <div className="title-section">
           <button className="arrow" onClick={goBack}></button>
@@ -191,6 +217,14 @@ const TermsAndConditions = () => {
           </p>
         </section>
       </div>
+
+      {showBackToTop && (
+        <button
+          id="topbutton"
+          className="topshow"
+          onClick={scrollToTop}
+        ></button>
+      )}
       <Footer />
     </div>
   );

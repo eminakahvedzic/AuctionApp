@@ -132,3 +132,41 @@
     border-radius:50%;
   }
 }
+
+#topbutton {
+  display: inline-block;
+  background-color: var(--primary-color);
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 100px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+#topbutton::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: var(--white);
+}
+
+#topbutton:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+
+
+#topbutton.topshow {
+  opacity: 1;
+  visibility: visible;
+}

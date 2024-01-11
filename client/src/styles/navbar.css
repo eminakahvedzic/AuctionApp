@@ -21,7 +21,6 @@
 
 .hidden{
     visibility: hidden; 
-    /* Search bar is hidden until functionality is applied */
 }
 
 .search-bar {
@@ -112,7 +111,7 @@
 .user-info{
      display: flex;
      gap: 24px; 
-     margin-left:900px;
+     margin-left:970px;
 }
 
 .user-info a{

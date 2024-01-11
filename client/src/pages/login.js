@@ -16,7 +16,31 @@ function Login() {
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
   const [rememberMe, setRememberMe] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      setShowBackToTop(true);
+    } else {
+      setShowBackToTop(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const navigate = useNavigate();
 
   useEffect(() => {

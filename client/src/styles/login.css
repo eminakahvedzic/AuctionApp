@@ -160,6 +160,10 @@
     flex-direction: row;
 }
 
+.social-button:hover{
+    background: var(--neutral09);
+}
+
 .social-button.facebook-button {
     width: 274px; 
 

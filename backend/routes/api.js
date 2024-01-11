@@ -138,7 +138,7 @@ router.delete("/categories/:category_id", async (req, res) => {
 });
 
 router.get("/products/featured", async (req, res) => {
-  const count = req.query.count || 1; 
+  const count = req.query.count || 1;
   try {
     const featuredProducts = await queries.getFeaturedProducts(count);
     res.json(featuredProducts);
@@ -170,5 +170,49 @@ router.get("/products/:category", async (req, res) => {
   }
 });
 
+router.get(
+  "/products/:productId/images",
+  async (req, res) => {
+    const productId = req.params.productId;
+
+    try {
+      const productImages = await queries.getProductImages(productId);
+
+      res.json(productImages);
+    } catch (error) {
+      console.error("Error fetching product images:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  },
+
+  router.get("/products/:productId/details", async (req, res) => {
+    try {
+      const productId = req.params.productId;
+      const product = await queries.getProductById(productId);
+
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+      const response = {
+        productId: product.rows[0].product_id,
+        sellerId: product.rows[0].seller_id,
+        name: product.rows[0].name,
+        description: product.rows[0].description,
+        startingBid: product.rows[0].starting_bid,
+        currentBid: product.rows[0].current_bid,
+        categoryId: product.rows[0].category_id,
+        closingDate: product.rows[0].closing_date,
+        timeCreated: product.rows[0].time_created,
+        rating: product.rows[0].rating,
+        numberOfBids:product.rows[0].number_of_bids
+      };
+
+      res.json(response);
+    } catch (error) {
+      console.error("Error fetching product:", error.message);
+      res.status(500).json({ message: "Server error" });
+    }
+  })
+);
 
 module.exports = router;

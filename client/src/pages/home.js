@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -14,6 +14,24 @@ const HomePage = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [currentProducts, setCurrentProducts] = useState([]);
   const [currentTab, setCurrentTab] = useState("");
+
+  useState(() => {
+    setCurrentTab("new_arrivals");
+
+    return () => {
+      setCurrentTab(null);
+    };
+  }, []);
+
+  function resetButtonIds(currentButtonId) {
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach((button) => {
+      if (button.id !== currentButtonId) {
+        button.id = "";
+      }
+    });
+  }
 
   useEffect(() => {
     const fetchInitialData = async () => {
@@ -44,10 +62,6 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchTabProducts = async () => {
-      const storedTab = sessionStorage.getItem("selectedTab"); 
-      if (storedTab) {
-        setCurrentTab(storedTab);
-      }
       try {
         const tabProductsResponse = await axios.get(
           `${process.env.REACT_APP_API_URL}/products/${currentTab}`
@@ -62,8 +76,9 @@ const HomePage = () => {
   }, [currentTab]);
 
   const handleTabClick = (tab) => {
-    sessionStorage.setItem("selectedTab", tab);
+    resetButtonIds(tab);
     setCurrentTab(tab);
+    
   };
 
   const isTabActive = (tab) => (currentTab === tab ? "active-tab" : "");
@@ -89,7 +104,11 @@ const HomePage = () => {
                     </Link>
                   </li>
                 ))}
-                <li className="category-item">All Categories</li>
+                <li>
+                  <Link to="/" className="category-item">
+                    All Categories
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -112,7 +131,9 @@ const HomePage = () => {
                 </Link>
               </div>
               <div className="ad-img">
-                <img src={featuredProduct[0].image_url} alt="Ad Image" />
+                <Link to={`/product/${featuredProduct[0].product_id}`}>
+                  <img src={featuredProduct[0].image_url} alt="Ad" />
+                </Link>
               </div>
             </div>
           ) : (
@@ -128,10 +149,60 @@ const HomePage = () => {
             <div className="featured-products-box">
               {featuredProducts.map((product) => (
                 <div key={product.product_id} className="featured-item">
-                  <div className="featured-image">
+                  <Link
+                    to={`/product/${product.product_id}`}
+                    className="product-link"
+                  >
+                    <div className="featured-image">
+                      <img src={product.image_url} alt={product.name} />
+                    </div>
+                    <div className="featured-details">
+                      <h3>{product.name}</h3>
+                      <p>
+                        Start From{" "}
+                        <span className="price">${product.starting_bid}</span>
+                      </p>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="third-box">
+          <div className="tab-titles">
+            <button
+              onClick={() => handleTabClick("new_arrivals")}
+              id={isTabActive("new_arrivals")}
+            >
+              New Arrivals
+            </button>
+            <button
+              onClick={() => handleTabClick("top_rated")}
+              id={isTabActive("top_rated")}
+            >
+              Top Rated
+            </button>
+            <button
+              onClick={() => handleTabClick("last_chance")}
+              id={isTabActive("last_chance")}
+            >
+              Last Chance
+            </button>
+          </div>
+
+          <div className="grid-view">
+            {currentProducts.map((product) => (
+              <Link
+                key={product.product_id}
+                to={`/product/${product.product_id}`}
+                className="product-link"
+              >
+                <div className="product-item">
+                  <div className="product-image">
                     <img src={product.image_url} alt={product.name} />
                   </div>
-                  <div className="featured-details">
+                  <div className="product-details">
                     <h3>{product.name}</h3>
                     <p>
                       Start From{" "}
@@ -139,35 +210,8 @@ const HomePage = () => {
                     </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="third-box">
-          <div className="tab-titles">
-            <button
-              onClick={() => handleTabClick("new_arrivals")}
-              className={isTabActive("new_arrivals")}
-            >
-              New Arrivals
-            </button>
-            <button
-              onClick={() => handleTabClick("top_rated")}
-              className={isTabActive("top_rated")}
-            >
-              Top Rated
-            </button>
-            <button
-              onClick={() => handleTabClick("last_chance")}
-              className={isTabActive("last_chance")}
-            >
-              Last Chance
-            </button>
-          </div>
-
-          <div className="grid-view">
-            <GridView products={currentProducts} columns={4} rows={2} />
+              </Link>
+            ))}
           </div>
         </div>
       </main>

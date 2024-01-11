@@ -1,30 +1,24 @@
-import { useLocation } from "react-router-dom";
 import "../styles/navbar.css";
 import "./constants.css";
 import React, { useState, useEffect } from "react";
 import loginPathnames from "../constants";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-
 const Navbar = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const [userFirstName, setUserFirstName] = useState("");
 
-  const isLoginPath = loginPathnames.includes(location.pathname);
+  const isLoginPath = loginPathnames.includes(window.location.pathname);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-useEffect(() => {
-  const cookieString = document.cookie;
-  const tokenCookie = cookieString
-    .split("; ")
-    .find((row) => row.startsWith("jwtToken="));
+  useEffect(() => {
+    const cookieString = document.cookie;
+    const tokenCookie = cookieString
+      .split("; ")
+      .find((row) => row.startsWith("jwtToken="));
 
-  setIsLoggedIn(!!tokenCookie && tokenCookie.split("=")[1].trim() !== "");
-}, []);
-
+    setIsLoggedIn(!!tokenCookie && tokenCookie.split("=")[1].trim() !== "");
+  }, []);
 
   useEffect(() => {
     if (!isLoginPath) {
@@ -42,7 +36,6 @@ useEffect(() => {
       "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     localStorage.removeItem("userDetails");
     setIsLoggedIn(false);
-    navigate("/login");
   };
 
   return (
@@ -95,7 +88,7 @@ useEffect(() => {
             </Link>
           </div>
         </div>
-        <div className="hidden">
+        <div className={`main-white ${isLoginPath ? "hidden" : ""}`}>
           <div className="search-bar">
             <div className="search-input">
               <input type="text" placeholder="Try enter: Shoes" />
